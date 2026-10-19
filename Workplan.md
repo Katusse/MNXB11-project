@@ -21,5 +21,5 @@ The first draft should stand by Sunday the 25th. Afterwards we try to fix small 
 0. Friday: Meet up
 1. This week: guiding sessions
 2. 29th: Hand In Code
-3. 30/31st: Presentation
+3. 29/30st: Presentation
 4. After a few days: Hand In Report
