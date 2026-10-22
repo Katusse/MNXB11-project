@@ -15,11 +15,14 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 
 # Example (entries from newest to oldest):
 
-2025-09-26 Florido Paganelli  <florido.paganelli@fysik.lu.se>
+2026-10-22 Charlotte Rösler  <charlotte_roesler@outlook.de>
 
-	Reviewing content of project template
+	Made a cleandata.sh file, claned data and put in private work files
 
-	* Added ChangeLog.txt with comments and examples
+	* Added cleandata.sh file in datasets
+	* Added cleaned_<data>.csv files for all data
+	* Added info about each file in report_<data>.txt
+	*Added read_yearly.C YearTemp.H YearTemp.cxx for my own use until the code works
 
 2025-09-25 Florido Paganelli  <florido.paganelli@fysik.lu.se>
 
