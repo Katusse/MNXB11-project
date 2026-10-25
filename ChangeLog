@@ -33,4 +33,12 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* main.cxx is supposed to run the code, it does not work yet
 	*The other files are suppposed to help the running process, will be removed because it does not run yet
 
+2026-10-25 Charlotte Rösler  <charlotte_roesler@outlook.de>
 
+	Made a run_weather.C and yearly_average.C file in src
+
+	* run_weather.C is the working macro to run load_data.cxx
+	* it stores the weather_data.root tree with all extracted columns from the data
+	* main.cxx from last time is not inmproved, can be deleted, because run_weather took its job
+	*Added yearly_average.C, which gives the yearly average over 200 years and plots a histogram stored as yearly_average_temperature.png
+	*yearly_average.C not completely error free and not the final version yet.
