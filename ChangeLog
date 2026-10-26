@@ -42,3 +42,10 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* main.cxx from last time is not inmproved, can be deleted, because run_weather took its job
 	*Added yearly_average.C, which gives the yearly average over 200 years and plots a histogram stored as yearly_average_temperature.png
 	*yearly_average.C not completely error free and not the final version yet.
+
+2026-10-26 Herman Plank  <herman@plank.se>
+
+	Made a yearly_extremes.C file in src/ and added folder results/ for plots.
+
+	*Added yearly_extremes.C, which produces plots over yearly and monthly extreme temperatures, stored as .png's in a new results/ folder.
+	*yearly_extremes.C is probably not the final version yet, will try to improve and figure out if I want to represent the data in other ways.
