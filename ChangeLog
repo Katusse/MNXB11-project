@@ -15,16 +15,43 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 
 # Example (entries from newest to oldest):
 
-2025-09-26 Florido Paganelli  <florido.paganelli@fysik.lu.se>
+2026-10-22 Charlotte Rösler  <charlotte_roesler@outlook.de>
 
-	Reviewing content of project template
+	Made a cleandata.sh file, claned data and put in private work files
 
-	* Added ChangeLog.txt with comments and examples
+	* Added cleandata.sh file in datasets
+	* Added cleaned_<data>.csv files for all data
+	* Added info about each file in report_<data>.txt
+	*Added read_yearly.C YearTemp.H YearTemp.cxx for my own use until the code works
 
-2025-09-25 Florido Paganelli  <florido.paganelli@fysik.lu.se>
+2026-10-24 Charlotte Rösler  <charlotte_roesler@outlook.de>
 
-	Reviewing content of project template
+	Made a load_data.cxx load_data.h and main.cxx file in src
 
-	* Checking directory structure
-	* Added Workplan.md
+	* load_data.h is the header for loading the data
+	* load_data.cxx is the data loader using root
+	* main.cxx is supposed to run the code, it does not work yet
+	*The other files are suppposed to help the running process, will be removed because it does not run yet
 
+2026-10-25 Charlotte Rösler  <charlotte_roesler@outlook.de>
+
+	Made a run_weather.C and yearly_average.C file in src
+
+	* run_weather.C is the working macro to run load_data.cxx
+	* it stores the weather_data.root tree with all extracted columns from the data
+	* main.cxx from last time is not inmproved, can be deleted, because run_weather took its job
+	*Added yearly_average.C, which gives the yearly average over 200 years and plots a histogram stored as yearly_average_temperature.png
+	*yearly_average.C not completely error free and not the final version yet.
+
+2026-10-26 Herman Plank  <herman@plank.se>
+
+	Made a yearly_extremes.C file in src/ and added folder results/ for plots.
+
+	*Added yearly_extremes.C, which produces plots over yearly and monthly extreme temperatures, stored as .png's in a new results/ folder.
+	*yearly_extremes.C is probably not the final version yet, will try to improve and figure out if I want to represent the data in other ways.
+	
+2026-10-28 Samuel kattaya  <sa6826ka-s@student.lu.se>
+
+	Made a daily_average.C file in src/.
+
+	*Added daily_average.C, it produces Figure 2: Histogram showing the mean temperature on each day of the year. It is stored as .png's in the MNXB11-project directory.

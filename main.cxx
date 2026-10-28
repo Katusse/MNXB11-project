@@ -1,15 +1,24 @@
+#include "run_Love_analysis.h"
 
 #include <iostream>
-int main(int argc, char *argv[]) {
-  std::cout << "I am just a code template, you need to implement the "
-               "functionality you want to use yourself!"
-            << std::endl;
 
-  std::cout << "We were passed " << argc
-            << " command line arguments, the first of which was " << argv[0]
-            << std::endl;
-  std::cout << "With a good CLI library, we could use the command line "
-               "arguments to make a useful program."
-            << std::endl;
-  return 0;
+
+int main(int argc, char* argv[])
+{
+    // Use Lund by default if no city is supplied.
+    const char* city = "lund";
+
+    if (argc > 2) {
+        std::cerr << "Usage: " << argv[0]
+                  << " [city]\n";
+        return 1;
+    }
+
+    if (argc == 2) {
+        city = argv[1];
+    }
+
+    run_Love_analysis(city);
+
+    return 0;
 }

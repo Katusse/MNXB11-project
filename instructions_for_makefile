@@ -1,0 +1,8 @@
+In order to make the build work:
+Make a run_[YOUR NAME]_analysis.cxx and .h file that calls
+on your main function that produces a plot (for me that is
+analyze_temperature in extremedays.cxx). Add your run_analysis() to the main.cxx in the same way I've done (remember to include in the header as well). Also add in the makefile on line 38 & 39 so that it can make the .o-files when building.
+
+Make sure that all of your .cxx files are in src and all your .h files are in include
+
+After adding, use make in your ROOT-repository. If it goes through you can use ./main to run all the added analyses. The default data-set is Lund but you can input any city by just typing the name e.g "./main falsterbo". Any city with an å has an a instead so that it can be typed in ROOT.
