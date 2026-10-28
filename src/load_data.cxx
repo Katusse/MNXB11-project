@@ -102,7 +102,7 @@ bool Measurement::is_valid()const{
     
 
     //Check the time data
-    const int hours_in_day=24;
+    [[maybe_unused]] const int hours_in_day=24;
     int minute_in_hour=60;
     int second_in_minute=60;
     bool day_valid=(((hour_ >= 0) && (hour_<24)) && ((minute_ >= 0) && (minute_<minute_in_hour)) && ((second_ >= 0) && (second_<second_in_minute)));
