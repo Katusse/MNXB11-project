@@ -49,3 +49,9 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 
 	*Added yearly_extremes.C, which produces plots over yearly and monthly extreme temperatures, stored as .png's in a new results/ folder.
 	*yearly_extremes.C is probably not the final version yet, will try to improve and figure out if I want to represent the data in other ways.
+	
+2026-10-28 Samuel kattaya  <sa6826ka-s@student.lu.se>
+
+	Made a daily_average.C file in src/.
+
+	*Added daily_average.C, it produces Figure 2: Histogram showing the mean temperature on each day of the year. It is stored as .png's in the MNXB11-project directory.

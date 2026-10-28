@@ -8,8 +8,8 @@
 4. How did difference in extreme temperatures (average of 3 extreme days in the year) in each year change over the measurement period in Uppsala?
 
 ## Who does who?
-1. Samuel 
-2. Charlotte
+1. Charlotte 
+2. Samuel
 3. Love
 4. Herman
 
