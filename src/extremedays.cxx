@@ -3,7 +3,9 @@
 #include <TCanvas.h>
 #include <TGraph.h>
 #include <TAxis.h>
+#include <TH1D.h>
 
+#include <cstdlib>
 #include <map>
 #include <tuple>
 #include <vector>
@@ -167,66 +169,64 @@ void analyze_temperature(
         }
     }
 
-    // 5. Plot the hottest-day frequencies.
-    TGraph* hottest_graph = new TGraph();
 
+    // 5. Plot hottest and coldest frequencies together.
+
+    TH1D* hottest_hist = new TH1D(
+        "hottest_hist",
+        "Annual Temperature Extremes;Day of Year;Number of Years",
+        366, 0.5, 366.5
+    );
+
+    TH1D* coldest_hist = new TH1D(
+        "coldest_hist",
+        "Annual Temperature Extremes;Day of Year;Number of Years",
+        366, 0.5, 366.5
+    );
+
+    // Fill the histograms with the previously calculated frequencies.
     for (int d = 1; d <= 366; ++d) {
-        hottest_graph->SetPoint(
-            d - 1, d, hottest_frequency[d]
+        hottest_hist->SetBinContent(
+            d, hottest_frequency[d]
+        );
+
+        coldest_hist->SetBinContent(
+            d, coldest_frequency[d]
         );
     }
 
+    // Style the histograms.
+    hottest_hist->SetFillColor(kRed);
+    hottest_hist->SetLineColor(kRed);
+    hottest_hist->SetBarWidth(0.45);
+    hottest_hist->SetBarOffset(0.05);
+
+    coldest_hist->SetFillColor(kBlue);
+    coldest_hist->SetLineColor(kBlue);
+    coldest_hist->SetBarWidth(0.45);
+    coldest_hist->SetBarOffset(0.50);
+
+    // Create one canvas for both histograms.
     TCanvas* c1 = new TCanvas(
-        "hottest_canvas", "Hottest Days", 1200, 600
+        "extremes_canvas",
+        "Hottest and Coldest Days",
+        1400, 700
     );
 
-    hottest_graph->SetTitle(
-        "Frequency of Annual Hottest Days;"
-        "Calendar Date;Number of Years"
-    );
+    // Set the display range and axis divisions.
+    hottest_hist->GetXaxis()->SetRangeUser(1, 366);
+    hottest_hist->GetXaxis()->SetNdivisions(12);
 
-    hottest_graph->SetMarkerStyle(20);
-    hottest_graph->SetMarkerColor(kRed);
-    hottest_graph->SetLineColor(kRed);
-    hottest_graph->GetXaxis()->SetLimits(1, 366);
-    hottest_graph->GetXaxis()->SetNdivisions(12);
-    hottest_graph->Draw("ALP");
+    // Draw both sets of bars on the same graph.
+    hottest_hist->Draw("HIST BAR");
+    coldest_hist->Draw("HIST BAR SAME");
 
     c1->SetGrid();
-    c1->SaveAs("hottest_days.png");
+    c1->SaveAs("temperature_extremes.png");
 
-    // 6. Plot the coldest-day frequencies.
-    TGraph* coldest_graph = new TGraph();
-
-    for (int d = 1; d <= 366; ++d) {
-        coldest_graph->SetPoint(
-            d - 1, d, coldest_frequency[d]
-        );
-    }
-
-    TCanvas* c2 = new TCanvas(
-        "coldest_canvas", "Coldest Days", 1200, 600
-    );
-
-    coldest_graph->SetTitle(
-        "Frequency of Annual Coldest Days;"
-        "Calendar Date;Number of Years"
-    );
-
-    coldest_graph->SetMarkerStyle(20);
-    coldest_graph->SetMarkerColor(kBlue);
-    coldest_graph->SetLineColor(kBlue);
-    coldest_graph->GetXaxis()->SetLimits(1, 366);
-    coldest_graph->GetXaxis()->SetNdivisions(12);
-    coldest_graph->Draw("ALP");
-
-    c2->SetGrid();
-    c2->SaveAs("coldest_days.png");
 }
-
 // Load data using the existing loader, then run the analysis.
-void analyze_temperature(const std::string& filename)
-{
+void analyze_temperature(const std::string& filename) {
     std::vector<Measurement> measurements =
         read_measurements(filename);
 
@@ -235,3 +235,4 @@ void analyze_temperature(const std::string& filename)
 
     analyze_temperature(measurements);
 }
+
