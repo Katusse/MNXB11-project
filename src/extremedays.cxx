@@ -4,6 +4,7 @@
 #include <TGraph.h>
 #include <TAxis.h>
 #include <TH1D.h>
+#include <TStyle.h>
 
 #include <cstdlib>
 #include <map>
@@ -35,33 +36,6 @@ static int calendar_day(int month, int day)
     };
 
     return days_before_month[month] + day;
-}
-
-// Convert a calendar-day index into a readable month/day label.
-static std::string calendar_label(int doy)
-{
-    const int days_in_month[] = {
-        31, 29, 31, 30, 31, 30,
-        31, 31, 30, 31, 30, 31
-    };
-
-    const char* months[] = {
-        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-    };
-
-    int day = doy;
-
-    for (int month = 0; month < 12; ++month) {
-        if (day <= days_in_month[month]) {
-            return std::string(months[month]) + " " +
-                   std::to_string(day);
-        }
-
-        day -= days_in_month[month];
-    }
-
-    return "";
 }
 
 // Analyze an already-loaded collection of measurements.
@@ -150,27 +124,7 @@ void analyze_temperature(
         }
     }
 
-    // 4. Print a summary.
-    std::cout << "Years represented: "
-              << yearly_data.size() << '\n';
-
-    std::cout << "Day of year | Calendar date"
-              << " | Hottest frequency"
-              << " | Coldest frequency\n";
-
-    for (int d = 1; d <= 366; ++d) {
-        if (hottest_frequency[d] > 0 ||
-            coldest_frequency[d] > 0) {
-
-            std::cout << d << " | "
-                      << calendar_label(d) << " | "
-                      << hottest_frequency[d] << " | "
-                      << coldest_frequency[d] << '\n';
-        }
-    }
-
-
-    // 5. Plot hottest and coldest frequencies together.
+    // 4. Plot hottest and coldest frequencies together.
 
     TH1D* hottest_hist = new TH1D(
         "hottest_hist",
@@ -216,6 +170,9 @@ void analyze_temperature(
     // Set the display range and axis divisions.
     hottest_hist->GetXaxis()->SetRangeUser(1, 366);
     hottest_hist->GetXaxis()->SetNdivisions(12);
+
+    // Removes an Unnecessary Legend
+    gStyle->SetOptStat(0);
 
     // Draw both sets of bars on the same graph.
     hottest_hist->Draw("HIST BAR");
