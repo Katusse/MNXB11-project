@@ -55,3 +55,52 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	Made a daily_average.C file in src/.
 
 	*Added daily_average.C, it produces Figure 2: Histogram showing the mean temperature on each day of the year. It is stored as .png's in the MNXB11-project directory.
+
+
+2026-10-25 Love Hagerberg <louffi.hagerberg@gmail.com>
+
+	Made a "Temporary_Analysis" File which reads the data averages the temperature of each day and plots how many instances a day is the warmest or coldest.
+
+	Started with just a code that went through and plotted, then I added the averaging, then I added the comparison within a year. Finally I changed it so it takes in days that have less than three measurements and measurements that have the "Y" marking.
+
+2026-10-26 Love Hagerberg <louffi.hagerber@gmail.com>
+
+	Read through what everybody else had made cause I had only pulled from main rather than from Dev.
+
+	Made Extremedays.cxx and .h with Temporary_Analysis as a base. Extremedays integrates the load_data files but not run_weather.
+
+2026-10-27 Love Hagerberg <louffi.hagerber@gmail.com>
+
+	Worked on making the datasets interchangeable for our analyses. For this, dataset_registry.cxx and .h were created, they pull the csv files when the name of the city is given. Then I created run_analysis.C to pull from the data_registry and then execute the temperature_analysis function in extremedays.
+
+	Also started fully updating the makefile to compile all of the different files so you can run it on command.
+
+	Finally I changed the run_analysis from a macro to a .cxx and .h file.
+
+	Spent the rest of the day fixing bugs in and related to run_analysis to make the build work. E.g. making sure extremedays.h can do strings.
+
+2026-10-28 Love Hagerberg <louffi.hagerber@gmail.com>
+
+	Successfully made the build work after changing the makefile so it properly builds the library files separately from the  
+	.cxx files. Also started linking all the functions through main so that main becomes the command to run everything.
+
+	Also redid the changes from yesterday since I had been writing in old copies of the files stored in a different directory.
+
+	Updated main so that you can add the city name after the command rather than changing the file itself.
+
+	Changed the run_analysis to Run_Love_Analysis so that others can make similiar files that call their specific functions.
+
+2026-10-29 Love Hagerberg <louffi.hagerber@gmail.com>
+
+	Merged the plotting of warmest and coldest days and removed a header.
+
+	Removed the non-graph results from extremedays since it's technically not necessary.
+
+2026-10-29 Charlotte Rösler  <charlotte_roesler@outlook.de>
+
+	Made a run_weather.C and yearly_average.C to work with makefile
+
+	* fixed bug in my plot
+	* run_weather and yearly_average are now cxx files and got headers in /include
+	* both are included in main.cxx and makefiles and can be run with make
+	* you can put city names into run_weather now

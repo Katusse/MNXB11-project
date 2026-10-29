@@ -35,8 +35,8 @@ main.o: main.cxx
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Link the executable against the shared library and ROOT.
-main: main.o src/run_Love_analysis.o src/extremedays.o libMNXB11.so
-	$(CXX) -o $@ main.o src/run_Love_analysis.o src/extremedays.o -L. -lMNXB11 $(LDFLAGS) -Wl,-rpath,'$$ORIGIN'
+main: main.o src/run_Love_analysis.o src/extremedays.o src/run_weather.o src/yearly_average.o libMNXB11.so
+	$(CXX) -o $@ main.o src/run_Love_analysis.o src/extremedays.o src/run_weather.o src/yearly_average.o -L. -lMNXB11 $(LDFLAGS) -Wl,-rpath,'$$ORIGIN'
 
 # Remove generated files.
 clean:
