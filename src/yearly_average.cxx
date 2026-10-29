@@ -1,3 +1,4 @@
+#include "yearly_average.h"
 #include <TFile.h>
 #include <TTree.h>
 #include <TGraph.h>
@@ -175,5 +176,5 @@ c->RedrawAxis();
 
 
 
-c->SaveAs("yearly_average_temperature.png");
+c->SaveAs("results/yearly_average_temperature.png");
 }
