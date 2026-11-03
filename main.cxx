@@ -1,6 +1,7 @@
 #include "run_Love_analysis.h"
 #include "run_weather.h"
 #include "yearly_average.h"
+#include "yearly_extremes.h"
 #include <iostream>
 
 
@@ -22,6 +23,7 @@ int main(int argc, char* argv[])
     run_weather(city);
     yearly_average();
     run_Love_analysis(city);
+    yearly_extremes();
 
     std::remove("weather_data.root");
     
