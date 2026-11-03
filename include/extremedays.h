@@ -8,6 +8,6 @@ void analyze_temperature(
     const std::vector<Measurement>& measurements
 );
 
-void analyze_temperature(
+void load_temperature(
     const std::string& filename
 );
