@@ -24,6 +24,7 @@ int main(int argc, char* argv[])
     yearly_average();
     run_Love_analysis(city);
     yearly_extremes();
+    daily_average();
 
     std::remove("weather_data.root");
     
