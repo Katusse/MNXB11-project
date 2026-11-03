@@ -2,6 +2,7 @@
 #include "run_weather.h"
 #include "yearly_average.h"
 #include "yearly_extremes.h"
+#include "daily_average.h"
 #include <iostream>
 
 
