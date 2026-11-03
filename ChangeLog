@@ -96,3 +96,11 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 
 	Removed the non-graph results from extremedays since it's technically not necessary.
 
+2026-10-29 Charlotte Rösler  <charlotte_roesler@outlook.de>
+
+	Made a run_weather.C and yearly_average.C to work with makefile
+
+	* fixed bug in my plot
+	* run_weather and yearly_average are now cxx files and got headers in /include
+	* both are included in main.cxx and makefiles and can be run with make
+	* you can put city names into run_weather now

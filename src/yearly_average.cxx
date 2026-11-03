@@ -1,3 +1,4 @@
+#include "yearly_average.h"
 #include <TFile.h>
 #include <TTree.h>
 #include <TGraph.h>
@@ -149,9 +150,9 @@ above->SetLineColor(kRed);
 above->SetFillColor(kRed);
 below->SetLineColor(kBlue);
 below->SetFillColor(kBlue);
-white->SetFillStyle(1001);
-white->SetLineColor(kWhite);
-white->SetFillColor(kWhite);
+white->SetFillColor(10);
+white->SetLineColor(10);
+
 
 
 
@@ -175,5 +176,5 @@ c->RedrawAxis();
 
 
 
-c->SaveAs("yearly_average_temperature.png");
+c->SaveAs("results/yearly_average_temperature.png");
 }
