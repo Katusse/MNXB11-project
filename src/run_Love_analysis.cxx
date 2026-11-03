@@ -17,7 +17,7 @@ void run_Love_analysis(const char* dataset_name)
                   << filename << '\n';
 
         // Load the data and perform the analysis.
-        analyze_temperature(filename);
+        load_temperature(filename);
     }
     catch (const std::exception& e) {
         std::cerr << "Analysis failed: "
