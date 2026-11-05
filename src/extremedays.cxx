@@ -183,7 +183,7 @@ void analyze_temperature(
 
 }
 // Load data using the existing loader, then run the analysis.
-void analyze_temperature(const std::string& filename) {
+void load_temperature(const std::string& filename) {
     std::vector<Measurement> measurements =
         read_measurements(filename);
 
