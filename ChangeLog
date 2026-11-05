@@ -104,3 +104,10 @@ YYYY-MM-DD Name LastName  <email@somewhere>
 	* run_weather and yearly_average are now cxx files and got headers in /include
 	* both are included in main.cxx and makefiles and can be run with make
 	* you can put city names into run_weather now
+
+2026-11-05 Charlotte Rösler  <charlotte_roesler@outlook.de>
+
+	Finalized yearly_average.cxx
+
+	* the program checks if a year does not have well distributed measurement points and rejects the year if that is the case
+	* years without measurements are displayed in the plot with a grey background
