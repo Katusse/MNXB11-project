@@ -179,7 +179,7 @@ void analyze_temperature(
     coldest_hist->Draw("HIST BAR SAME");
 
     c1->SetGrid();
-    c1->SaveAs("temperature_extremes.png");
+    c1->SaveAs("results/temperature_extremes.png");
 
 }
 // Load data using the existing loader, then run the analysis.

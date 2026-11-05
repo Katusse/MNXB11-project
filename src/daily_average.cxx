@@ -125,5 +125,6 @@ void daily_average() {
     c->SetFillColor(kWhite);
     h_1->Draw("E2");
     c->RedrawAxis();
-    c->SaveAs("daily_average_temperature.png");
+
+    c->SaveAs("results/daily_average_temperature.png");
 }
