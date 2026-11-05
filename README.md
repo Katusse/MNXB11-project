@@ -4,7 +4,7 @@
 # Directory structure
 
 The base directory contains main.cxx which runs the code from src.
-Additionally the base directory contains this README, a changelog with our changes and a Dict.cxx. 
+Additionally the base directory contains this README and a changelog with our changes. 
 
 The folder `src/`contains the source code nedded to run the analysis for each task and needed to create a root Tree with the data.
 The folder `datasets/` includes the datasets, a bash programme to clean the datasets and the cleaned dtatasets.
@@ -12,14 +12,18 @@ The directory  `include/` contains all header files.
 
 
 
-The main files that can be a starting point are:
+The main files:
 
 
 - [main.cxx](main.cxx)
-  - This file contains a `main` function for your project, which runs the project. The name of the dataset can be passed into main
+  - This file contains a `main` function for the project.
+  - It takes two arguments: The function itself and a city name.
+  - If no city name is given it defaults to Lund.
+  - It then runs all analyses on that citys data.
+  - And then erases our created tree.
 - [Makefile](Makefile)
-  - This file gives the `make` utility instructions on how to build different targets. For your convenience there is also a `clean` target that can be used to delete built files to start anew.
-  - You should use this file if you plan to automate the C++ build of your project, but don't use it as a script. It is meant for C++ stuff only - use a BASH script for environment variables and task automation instead.
+  - This file gives the `make` utility instructions on how to build different targets. It also has a `clean` target that can be used to delete built files to start anew.
+  
 
 We have also included three special files in the base of the repository 
 - [.gitignore](.gitignore)
@@ -41,6 +45,9 @@ It further contains a bash prgramme `cleandata.sh`that takes a dataset and makes
 The cleaned datasets are stored in `datasets/`, too.
 
 The [src](src) folder contains all programmes.
+*`dataset_registry.cxx`shortens all of our datasets into string names that the files can use to call on them.
+*`extremedays.cxx`runs the analysis for how many days were hottest or coldest in a year, it uses functions from load_data.cxx directly rather than accessing weather_data.root 
+*`run_Love_analysis`is a programme that gets a dataset and then runs the functions from extremedays.cxx on it
 *`run_weather.cxx`contains the prgramme that loads the data with the help from function from load_data.cxx and makes a Tree called in weather_data.root that is called MNXB11_temperature. The tree stores all relevant info like all dates and times, the temperature measurement and the grading of the measurement. It can be run by passing in citynames
 *`load_data.cxx`defines the functions to load the data
 *`yearly_average.cxx` runs the analysis for yearly average temperatures and returns a histogram contianing the data. It accesses the weather_data.root
@@ -51,13 +58,8 @@ The [slurm](slurm) folder contains an example SLURM SBATCH script that calls one
 
 
 # Building the project
+  - The Makefile compiles all of our different src and header files as well as making a library out of our data and a generated C++ library.
+  - It then links all of our different analyses and our library through main.
 
-We have included a basic Makefile here which should be familiar to you. It follows the same project structure that we have been using in the course. When you add a new translation unit to the project, you have update the dependencies in the Makefile. 
-
-By default, the `all` target will be run which 
-- Compiles any `.cxx` files in the `src/` directory into object files 
-- Compiles [`main.cxx`](main.cxx) and links with all the object files in `src/`
-
-You can run the `clean` target (`make clean`) to remove any object files that have been produced as well as the `main` executable.
 
 
