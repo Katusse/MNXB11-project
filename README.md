@@ -1,29 +1,22 @@
-# MNXB11-project-template
-# About
-This folder contains a skeleton for your project that you can use as
-inspiration. Once you get started, do feel free to go ahead and replace this
-README file with one representing your project.
+# MNXB11-project
+
 
 # Directory structure
 
-The base directory here contains your "main" file, i.e. the C++ file that you
-will be using as your starting point in your project. The code in this file should ideally be short and just make use of the functionality that you've
-prepared in your other translation units. The majority of your code should be placed in  the two folders where you define your translation units, `src/` and `include/`. 
+The base directory contains main.cxx which runs the code from src.
+Additionally the base directory contains this README, a changelog with our changes and a Dict.cxx. 
 
-Do remember to add your include guards to your header files, otherwise the compiler will
-get multiple definitions if you end up loading two source files that include the
-same header.
+The folder `src/`contains the source code nedded to run the analysis for each task and needed to create a root Tree with the data.
+The folder `datasets/` includes the datasets, a bash programme to clean the datasets and the cleaned dtatasets.
+The directory  `include/` contains all header files.
 
-In the template you can find a small translation unit called Example (in [src/Example.cxx](src/Example.cxx) and [include/Example.h](include/Example.h)) that shows some commented reminders of how the syntax for some C++ constructs work. Feel free to use this as a reference to remind yourself of how to do something while working on it but make sure to remove it from your final project version!
 
-There is a demonstration of a toy project you can use for inspiration at [EinarElen/MNXB11-project-demo](https://github.com/EinarElen/MNXB11-project-demo). You should not copy code from this repository. There are some intentional bugs hiding in there, see if you can spot them. 
 
 The main files that can be a starting point are:
-- [rootlogon.C](rootlogon.C)
-  - This file contains code that ROOT will execute automatically whenever you start it, a good place to place general style choices you want to make or anything else you always want to run!
-  - Be careful to not include anything that depends on your particular machine here (e.g. absolute paths)
+
+
 - [main.cxx](main.cxx)
-  - This file contains a sample `main` function for your project. You should start with this file if you want to build the project as a C++ binary instead of using the ROOT interpreter.
+  - This file contains a `main` function for your project, which runs the project. The name of the dataset can be passed into main
 - [Makefile](Makefile)
   - This file gives the `make` utility instructions on how to build different targets. For your convenience there is also a `clean` target that can be used to delete built files to start anew.
   - You should use this file if you plan to automate the C++ build of your project, but don't use it as a script. It is meant for C++ stuff only - use a BASH script for environment variables and task automation instead.
@@ -44,6 +37,13 @@ We have also included three special files in the base of the repository
   - The `.clang-format` file holds the configuration that clang-format will use to determine how to format your code. By default, it will be formatted according to Google's style but you can pick any that you like from https://clang.llvm.org/docs/ClangFormatStyleOptions.html
 
 The [datasets](datasets) folder contains open data from SMHI and a README.md with further information about it.
+It further contains a bash prgramme `cleandata.sh`that takes a dataset and makes a clean_dataset.csv file out of it.
+The cleaned datasets are stored in `datasets/`, too.
+
+The [src](src) folder contains all programmes.
+*`run_weather.cxx`contains the prgramme that loads the data with the help from function from load_data.cxx and makes a Tree called in weather_data.root that is called MNXB11_temperature. The tree stores all relevant info like all dates and times, the temperature measurement and the grading of the measurement. It can be run by passing in citynames
+*`load_data.cxx`defines the functions to load the data
+*`yearly_average.cxx` runs the analysis for yearly average temperatures and returns a histogram contianing the data. It accesses the weather_data.root
 
 The [scripts](scripts) folder contains BASH scripts examples that can be used to create a build script or a launcher/wrapper for your binaries or for your SLURM submission
 
@@ -60,27 +60,4 @@ By default, the `all` target will be run which
 
 You can run the `clean` target (`make clean`) to remove any object files that have been produced as well as the `main` executable.
 
-## Adding external software libraries
 
-If you want to make use of external software libraries with your project, you
-will always have to tell the tool that builds your project. The Makefile included in this template will pick up any header files in the external/include directory and look for libraries in external/lib and external/lib64 so if you use external as your installation directory, you only need to add the corresponding `-l` flag to the linker.
-
-Here's an illustration of the typical process to add a (CMake based) external library
-``` sh
-# Clone or download the library you want to use 
-git clone https://somerepository.com/alibrary alibrary # The last argument determines what the directory will be called
-
-mkdir build/alibrary -pv # -p will tell mkdir to create the build/ directory if it doesn't already exist 
-# Go into the build directory
-cd build/alibrary 
-# Look up the documentation for the library to find out if there are any additional flags you need for CMake 
-
-# This command tells CMake to configure the build directory based on the source code in the ../../alibrary folder and to install the resulting headers and library files into ../../external
-cmake ../../alibrary -DCMAKE_INSTALL_PREFIX=../../external 
-# Build and install! Use -jN to launch N jobs
-make -j8 install # If you are on an 8-core machine
-```
-
-Make sure to document how to do this for any library you choose to use!
-
-Have fun!
