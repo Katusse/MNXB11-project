@@ -58,8 +58,15 @@ The [slurm](slurm) folder contains an example SLURM SBATCH script that calls one
 
 
 # Building the project
-  - The Makefile compiles all of our different src and header files as well as making a library out of our data and a generated C++ library.
+
+  Enter a rootapptainer and use the command `make`.
+  - The Makefile will compile all of our different src and header files as well as making a library out of our data and a generated C++ library.
   - It then links all of our different analyses and our library through main.
+
+# Running the project
+
+  Use ./main to run the main file in the current directory.
+  As a default it uses Lund for the analyses, type any other cities name after ./main in order to change this (for cities with å in them, use a instead).
 
 
 
