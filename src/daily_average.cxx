@@ -13,7 +13,7 @@
 // The standard deviation is plotted as error bard as in Figure 2.
 // The plot is then saved as 'daily_average_temperature.png' in the project directory.
 // Run the code in ROOT from the MNXB11-project directory and then:
-// root [] .x src/daily_average.C+
+// root [] .x src/daily_average.cxx+
 
 int get_day_of_year(int year, int month, int day) {
     const int days_in_month[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
