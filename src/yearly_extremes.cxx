@@ -64,7 +64,7 @@ void yearly_extremes() {
         tree->GetEntry(i);
 
         // filter out unphysical or invalid values
-        if (temperature < -80.0 || temperature > 60.0) continue;
+        if (temperature < -40.0 || temperature > 40.0) continue;
 
         // yearly extremes
         YearExtremes &y_ext = yearly_data[year];
