@@ -7,6 +7,8 @@
 # This assumes the project is run inside a git folder
 # One can remove this if no git is present and fix
 # paths manually
+./scripts/buildproject.sh
+
 GITROOT=$(git rev-parse --show-toplevel)
 
 if [ -d $GITROOT ]; then
@@ -33,3 +35,4 @@ else
   exit 1
 fi
 
+make clean
