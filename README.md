@@ -29,16 +29,6 @@ We have also included three special files in the base of the repository
 - [.gitignore](.gitignore)
   - This file contains regular expressions that git tells git that it shouldn't add certain file to your repository. 
   - Your git repository should generally not contain binary files like object files or executables nor should it contain build artefacts like external libraries. 
-- [.clang-format](.clang-format)
-  - This file holds the configuration for the clang-format tool that you can use to format your code consistently 
-  - It is a good idea to keep your code formatted in a consistent manner, especially when working in groups but doing it manually is a waste of your time. Use a tool for it!
-  ```
-  # Show what the src/Example.cxx file would look like if formatted
-  clang-format src/Example.cxx 
-  # Carry out the formatting in the file directly 
-  clang-format src/Example.cxx -i
-  ```
-  - The `.clang-format` file holds the configuration that clang-format will use to determine how to format your code. By default, it will be formatted according to Google's style but you can pick any that you like from https://clang.llvm.org/docs/ClangFormatStyleOptions.html
 
 The [datasets](datasets) folder contains open data from SMHI and a README.md with further information about it.
 It further contains a bash prgramme `cleandata.sh`that takes a dataset and makes a clean_dataset.csv file out of it.
@@ -47,8 +37,8 @@ The cleaned datasets are stored in `datasets/`, too.
 The [src](src) folder contains all programmes.
 *`dataset_registry.cxx`shortens all of our datasets into string names that the files can use to call on them.
 *`extremedays.cxx`runs the analysis for how many days were hottest or coldest in a year, it uses functions from load_data.cxx directly rather than accessing weather_data.root 
-*`run_Love_analysis`is a programme that gets a dataset and then runs the functions from extremedays.cxx on it
-*`run_weather.cxx`contains the prgramme that loads the data with the help from function from load_data.cxx and makes a Tree called in weather_data.root that is called MNXB11_temperature. The tree stores all relevant info like all dates and times, the temperature measurement and the grading of the measurement. It can be run by passing in citynames
+*`run_Love_analysis`is a program that gets a dataset and then runs the functions from extremedays.cxx on it
+*`run_weather.cxx`contains the program that loads the data with the help from function from load_data.cxx and makes a Tree called in weather_data.root that is called MNXB11_temperature. The tree stores all relevant info like all dates and times, the temperature measurement and the grading of the measurement. It can be run by passing in citynames
 *`load_data.cxx`defines the functions to load the data
 *`yearly_average.cxx` runs the analysis for yearly average temperatures and returns a histogram containing the data. It accesses the weather_data.root
 *`daily_average.cxx` takes the weather_data.root and makes the Mean temperature on each day of the year histogram.
