@@ -30,22 +30,22 @@ We have also included three special files in the base of the repository
   - This file contains regular expressions that git tells git that it shouldn't add certain file to your repository. 
   - Your git repository should generally not contain binary files like object files or executables nor should it contain build artefacts like external libraries. 
 
-The [datasets](datasets) folder contains open data from SMHI and a README.md with further information about it.
-It further contains a bash prgramme `cleandata.sh`that takes a dataset and makes a clean_dataset.csv file out of it.
-The cleaned datasets are stored in `datasets/`, too.
+- The [datasets](datasets) folder contains open data from SMHI and a README.md with further information about it.
+  - It further contains a bash prgramme `cleandata.sh`that takes a dataset and makes a clean_dataset.csv file out of it.
+  - The cleaned datasets are stored in `datasets/`, too.
 
-The [src](src) folder contains all programmes.
-*`dataset_registry.cxx`shortens all of our datasets into string names that the files can use to call on them.
-*`extremedays.cxx`runs the analysis for how many days were hottest or coldest in a year, it uses functions from load_data.cxx directly rather than accessing weather_data.root 
-*`run_Love_analysis`is a program that gets a dataset and then runs the functions from extremedays.cxx on it
-*`run_weather.cxx`contains the program that loads the data with the help from function from load_data.cxx and makes a Tree called in weather_data.root that is called MNXB11_temperature. The tree stores all relevant info like all dates and times, the temperature measurement and the grading of the measurement. It can be run by passing in citynames
-*`load_data.cxx`defines the functions to load the data
-*`yearly_average.cxx` runs the analysis for yearly average temperatures and returns a histogram containing the data. It accesses the weather_data.root
-*`daily_average.cxx` takes the weather_data.root and makes the Mean temperature on each day of the year histogram.
+- The [src](src) folder contains all programmes.
+  - `dataset_registry.cxx`shortens all of our datasets into string names that the files can use to call on them.
+  - `extremedays.cxx`runs the analysis for how many days were hottest or coldest in a year, it uses functions from load_data.cxx directly rather than accessing weather_data.root 
+  - `run_Love_analysis`is a program that gets a dataset and then runs the functions from extremedays.cxx on it
+  - `run_weather.cxx`contains the program that loads the data with the help from function from load_data.cxx and makes a Tree called in weather_data.root that is called MNXB11_temperature. The tree stores all relevant info like all dates and times, the temperature measurement and the grading of the measurement. It can be run by passing in citynames
+  - `load_data.cxx`defines the functions to load the data
+  - `yearly_average.cxx` runs the analysis for yearly average temperatures and returns a histogram containing the data. It accesses the weather_data.root
+  - `daily_average.cxx` takes the weather_data.root and makes the Mean temperature on each day of the year histogram.
 
-The [scripts](scripts) folder contains BASH scripts examples that can be used to create a build script or a launcher/wrapper for your binaries or for your SLURM submission
+- The [scripts](scripts) folder contains BASH scripts examples that can be used to create a build script or a launcher/wrapper for your binaries or for your SLURM submission
 
-The [slurm](slurm) folder contains an example SLURM SBATCH script that calls one of the project launcher scripts above.
+- The [slurm](slurm) folder contains an example SLURM SBATCH script that calls one of the project launcher scripts above.
 
 
 # Building the project
