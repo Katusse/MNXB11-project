@@ -40,7 +40,7 @@ std::string get_dataset_path(const std::string& name)
         },
         {
             "uppsala",
-            "datasets/clean_smhi-opendata_1_97530_20261007_165105_Uppsala_Flygplats.csv"
+            "../datasets/clean_smhi-opendata_1_97530_20261007_165105_Uppsala_Flygplats.csv"
         },
         {
             "soderarm",
