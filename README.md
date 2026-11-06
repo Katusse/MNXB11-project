@@ -50,7 +50,8 @@ The [src](src) folder contains all programmes.
 *`run_Love_analysis`is a programme that gets a dataset and then runs the functions from extremedays.cxx on it
 *`run_weather.cxx`contains the prgramme that loads the data with the help from function from load_data.cxx and makes a Tree called in weather_data.root that is called MNXB11_temperature. The tree stores all relevant info like all dates and times, the temperature measurement and the grading of the measurement. It can be run by passing in citynames
 *`load_data.cxx`defines the functions to load the data
-*`yearly_average.cxx` runs the analysis for yearly average temperatures and returns a histogram contianing the data. It accesses the weather_data.root
+*`yearly_average.cxx` runs the analysis for yearly average temperatures and returns a histogram containing the data. It accesses the weather_data.root
+*`daily_average.cxx` takes the weather_data.root and makes the Mean temperature on each day of the year histogram.
 
 The [scripts](scripts) folder contains BASH scripts examples that can be used to create a build script or a launcher/wrapper for your binaries or for your SLURM submission
 
