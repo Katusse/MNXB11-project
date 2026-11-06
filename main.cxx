@@ -4,7 +4,7 @@
 #include "yearly_extremes.h"
 #include "daily_average.h"
 #include <iostream>
-
+#include <filesystem>
 
 int main(int argc, char* argv[])
 {
@@ -20,6 +20,8 @@ int main(int argc, char* argv[])
     if (argc == 2) {
         city = argv[1];
     }
+
+    std::filesystem::create_directories("results");
 
     run_weather(city);
     yearly_average();
