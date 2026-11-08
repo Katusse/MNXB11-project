@@ -3,12 +3,12 @@
 
 # Directory structure
 
-The base directory contains main.cxx which runs the code from src.
+The base directory contains main.cxx which runs the code from src and the MakeFile for compiling and building.
 Additionally the base directory contains this README and a changelog with our changes. 
 
 The folder `src/`contains the source code nedded to run the analysis for each task and needed to create a root Tree with the data.
 The folder `datasets/` includes the datasets, a bash programme to clean the datasets and the cleaned dtatasets.
-The directory  `include/` contains all header files.
+The directory  `include/` contains all header files including LinkDef.h.
 
 
 
@@ -20,7 +20,9 @@ The main files:
   - It takes two arguments: The function itself and a city name.
   - If no city name is given it defaults to Lund.
   - It then runs all analyses on that citys data.
+  - It puts all our generated plots into a directory it generates called `results`
   - And then erases our created tree.
+    
 - [Makefile](Makefile)
   - This file gives the `make` utility instructions on how to build different targets. It also has a `clean` target that can be used to delete built files to start anew.
   
@@ -50,14 +52,17 @@ We have also included three special files in the base of the repository
 
 # Building the project
 
-  Enter a rootapptainer and use the command `make`.
-  - The Makefile will compile all of our different src and header files as well as making a library out of our data and a generated C++ library.
+  Enter the main directory within a root apptainer and use the command `make`.
+  - The Makefile creates a directory called `build`
+  - The Makefile then compiles all of our different src and header files as well as making a library out of our data and a generated C++ library.
+  - These are put into the `build` directory.
   - It then links all of our different analyses and our library through main.
 
 # Running the project
-
-  Use ./main to run the main file in the current directory.
-  As a default it uses Lund for the analyses, type any other cities name after ./main in order to change this (for cities with å in them, use a instead).
+  - Go into the `build` directory in your apptainer.
+  - Use ./main to run the main file in the current directory.
+  //As a default it uses Lund for the analyses, type any other cities name after ./main in order to change this (for cities with å in them, use a instead).
+  - The main file creates a directory called `results` where it puts all of the generated plots.
 
 
 
