@@ -1,5 +1,12 @@
 Changelog
 
+2026-11-06 Love Hagerberg <louffi.hagerber@gmail.com>
+
+	Finalized main.cxx and Makefile
+
+	* Added lines to create a build directory and a results directory in main.cxx and Makefile respectively
+	* Changed so everything Makefile creates goes into that directory
+
 2026-11-05 Charlotte Rösler  <charlotte_roesler@outlook.de>
 
 	Finalized yearly_average.cxx
@@ -20,11 +27,15 @@ Changelog
 
 2026-10-29 Love Hagerberg <louffi.hagerber@gmail.com>
 
+	Finalized extremedays.cxx
+
 	*Merged the plotting of warmest and coldest days and removed a header.
 	*Removed the non-graph results from extremedays since it's technically not necessary.
 
 	
 2026-10-28 Love Hagerberg <louffi.hagerber@gmail.com>
+
+	Completed the Makefile and created a successful build
 
 	*Successfully made the build work after changing the makefile so it properly builds the library files separately from the  
 	.cxx files. Also started linking all the functions through main so that main becomes the command to run everything.
@@ -43,13 +54,17 @@ Changelog
 
 2026-10-27 Love Hagerberg <louffi.hagerber@gmail.com>
 
+	Worked on creating a shared library for the datasets by creating new files and changing some of the old ones.
+
 	*Worked on making the datasets interchangeable for our analyses. For this, dataset_registry.cxx and .h were created, they pull the csv files when the name of the city is given. Then I created run_analysis.C to pull from the data_registry and then execute the temperature_analysis function in extremedays.
 	*Also started fully updating the makefile to compile all of the different files so you can run it on command.
 	*Finally I changed the run_analysis from a macro to a .cxx and .h file.
-	*Spent the rest of the day fixing bugs in and related to run_analysis to make the build work. E.g. making sure extremedays.h can do strings.
+	*Spent the rest of the day fixing bugs in and related to run_analysis to make the build work. E.g. making sure the second analyze_temperature function accepts string arguments.
 
 
 2026-10-26 Love Hagerberg <louffi.hagerber@gmail.com>
+
+	Incorporated others work into my existing code.
 
 	*Read through what everybody else had made cause I had only pulled from main rather than from Dev.
 	*Made Extremedays.cxx and .h with Temporary_Analysis as a base. 
@@ -62,19 +77,6 @@ Changelog
 
 	*Added yearly_extremes.C, which produces plots over yearly and monthly extreme temperatures, stored as .png's in a new results/ folder.
 	*yearly_extremes.C is probably not the final version yet, will try to improve and figure out if I want to represent the data in other ways.
-
-
-2026-10-25 Love Hagerberg <louffi.hagerberg@gmail.com>
-
-	Made a "Temporary_Analysis" File which reads the data averages the temperature of each day and plots how many instances a day is the warmest or coldest.
-
-	*Started with just a code that went through and plotted, then I added the averaging, then I added the comparison within a year. 
-	*Finally I changed it so it takes in days that have less than three measurements and measurements that have the "Y" marking.
-
-
-2026-10-25 Love Hagerberg <louffi.hagerberg@gmail.com>
-
-	*Made a "Temporary_Analysis" File which reads the data averages the temperature of each day and plots how many instances a day is the warmest or coldest.
 
 
 2026-10-25 Love Hagerberg <louffi.hagerberg@gmail.com>
