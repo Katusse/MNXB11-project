@@ -27,7 +27,7 @@ usage(){
 	echo -e "  To call this script please use"
 	echo -e "   $0 '<path-to-datafile>'"
 	echo -e "  Example:"
-    echo -e "   $0 '/tutorial3/casestudy/data/smhi-opendata_1_52240_20200905_163726.csv'"
+    echo -e "   $0 '/datasets/smhi-lund_1_52240_20200905_163726.csv'"
 	echo "----"
 }
 

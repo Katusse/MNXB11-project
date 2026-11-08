@@ -11,8 +11,7 @@
 
 //This file is defining the functions from the header file load_data.h
 
-
-
+//use and implent ROOT (ClassImp) to include Measurement class in ROOT
 ClassImp(Measurement);
 
 
@@ -83,29 +82,26 @@ char Measurement::get_grading() const {
 bool Measurement::is_valid()const{
 
     bool timeline_valid=((year_>1500) &&(year_<= 2026));
-    int months_in_year=12;
 
     //Check the months of the year are less than 13
-    bool year_valid=((month_>= 1) && (month_<=months_in_year));
+    bool year_valid=((month_>= 1) && (month_<=12));
 
     //Define a function that checks the corrects days in the month, 
     //use 28 days for february and account for leap days later
     const std::vector <int> days_in_month={31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    int max_day = days_in_month[month_ -1];
+    int max_day = days_in_month[month_ -1]; //indexing srts at 0
     //find leap years as leap years divide by 4 or 400 but dont happen at centuries and  
     bool leap_year=((year_%4==0) && (year_ % 100 != 0))
         || year_ % 400 == 0;
     if (month_ == 2 && leap_year) {
         max_day = 29;
     }
+    // define which months are valid, the months that have the correct number of days
     bool month_valid=((day_ >= 1) && (day_<= max_day));
     
 
     //Check the time data
-    [[maybe_unused]] const int hours_in_day=24;
-    int minute_in_hour=60;
-    int second_in_minute=60;
-    bool day_valid=(((hour_ >= 0) && (hour_<24)) && ((minute_ >= 0) && (minute_<minute_in_hour)) && ((second_ >= 0) && (second_<second_in_minute)));
+    bool day_valid=(((hour_ >= 0) && (hour_<24)) && ((minute_ >= 0) && (minute_<60)) && ((second_ >= 0) && (second_<60)));
 
     //If all the above was checked the date is valid and it returns true
     bool date_valid=(day_valid && month_valid && year_valid && timeline_valid);
@@ -116,11 +112,10 @@ bool Measurement::is_valid()const{
 
 //###########################################
 
-
-
-
+//function that opens a file and reads the data to a vector of measurements, returns the vector
+// & refers to filename, we dont copy it
 std::vector<Measurement> read_measurements(const std::string& filename){
-    std::ifstream file{filename};
+    std::ifstream file{filename}; //input file stream, opens the file for reading, extracts data from file
 
     if (!file.is_open()){
         throw std::runtime_error("Could not open file:" + filename);
@@ -135,9 +130,10 @@ std::vector<Measurement> read_measurements(const std::string& filename){
   //The data that we use later is stored in measurements
   std::vector<Measurement> measurements;
 
-
+//separate data from ifstream, >> extracts data, sep. by whitespaces and stores it in variable
+//date in format YYYY-MM-DD, time in format HH:MM:SS, temperature in float, grading in char
 while (file >> date >> time >> temperature >> grading){
-    // convert the dates and times into integers
+    // convert the dates and times into integers (stoi=string to integer)
     int year = std::stoi(date.substr(0,4));
     int month= std::stoi(date.substr(5,2));
     int day= std::stoi(date.substr(8,2));
@@ -155,7 +151,7 @@ while (file >> date >> time >> temperature >> grading){
     if (measurement.is_valid()){
         measurements.push_back(measurement);
     }
-    else {
+    else {//warn but dont stop program (no throw)
         std::cerr <<"Warning:Skippping invalid measurement from date, time: "<<
         year << "-" << month<<"-" << day << " " << hour<< ":" << minute << ":" << second<< std::endl;
     }
@@ -167,7 +163,7 @@ return measurements;
 void persist_measurements(const std::vector<Measurement>& measurements,
                           const std::string& output_filename) {
   // Note: We need .c_str() because TFile expects a C-string (char*) but
-  // input_filename is a std::string.
+  // input_filename is a std::string, need a C_style string for Root, becomes char*
   TFile output_file{output_filename.c_str(), "RECREATE"};
   
   if (output_file.IsZombie()) {
@@ -181,6 +177,7 @@ void persist_measurements(const std::vector<Measurement>& measurements,
     Char_t grading;
 
     //Make branches for all the data
+    // &gives address of variable
     tree.Branch("year", &year);
     tree.Branch("month", &month);
     tree.Branch("day", &day);
@@ -202,6 +199,6 @@ for (const auto& measurement : measurements) {
 
     tree.Fill();
   }
-  tree.Write();
-  output_file.Close();
+  tree.Write(); //write tree to root file
+  output_file.Close(); //close file- no leakage
 }
