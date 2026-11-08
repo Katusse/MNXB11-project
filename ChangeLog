@@ -1,10 +1,40 @@
-Changelog
+Changelog‎
 
 2026-11-08 Herman Plank <herman@plank.se>
 
 	Added Final_Project.pdf
 
 	* It is still a draft so will be updated later on.
+
+2026-11-06 Samuel kattaya  <sa6826ka-s@student.lu.se>
+
+	Rename daily_average.C to daily_average.cxx
+	Create ‎include/daily_average.h‎
+
+	*Renamed daily_average.C to daily_average.cxx
+	*Added the daily_average.h
+
+2026-11-06 Samuel kattaya  <sa6826ka-s@student.lu.se>
+
+	Updated src/daily_average.cxx‎
+	Update README.md‎
+
+	*Updated the comments on the daily_average.cxx‎ file.
+	*Added the daily_average.cxx into the README.md file.
+
+2026-11-06 Samuel kattaya  <sa6826ka-s@student.lu.se>
+
+	Update ‎AUTHORS
+	Delete instructions_for_makefile 
+	Delete include/Example.h
+	Delete Dict.cxx‎ 
+	Delete src/MeasurementDict.cxx
+‎
+	*Added my name and email into the authors file.
+	*Deleted the instructions_for_makefile file.
+	*Deleted the include/Example.h file.
+	*Deleted the Dict.cxx‎ file.
+	*Deleted src/MeasurementDict.cxx file.
 
 2026-11-06 Love Hagerberg <louffi.hagerber@gmail.com>
 
