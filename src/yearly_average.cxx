@@ -242,10 +242,7 @@ void yearly_average(){
 
     // Fill each year's bin with its mean temperature
     for (std::size_t i = 0; i < meas_years.size(); i++) {
-            //histogram->SetBinContent(
-                //static_cast<int>(meas_years[i] - first_year + 1),
-                //yearly_mean_T[i]
-            //);
+
             int bin = static_cast<int>(meas_years[i] - first_year + 1);
             
             //Double_t difference =yearly_mean_T[i]- mean_T;
