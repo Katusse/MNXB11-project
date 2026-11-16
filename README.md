@@ -50,6 +50,13 @@ We have also included three special files in the base of the repository
 - The [slurm](slurm) folder contains an example SLURM SBATCH script that calls one of the project launcher scripts above.
 
 
+# Cleaning the data
+
+Before the below steps can be run a cleaned dataset for the city has to be achieved by running cleandata.sh in the datasets folder.
+ - run cleandata.sh by running `bash cleandata.sh <dataset>.txt` inside the datasets folder
+ - the cleaned dataset is saved in datasets under the name `cleaned_<dataset>.csv`
+The provided data has been fully cleaned and can be used for running the project directly by using their cleaned version
+
 # Building the project
 
   Enter the main directory within a root apptainer and use the command `make`.
